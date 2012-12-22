@@ -19,7 +19,7 @@ exports.layouts =
 # variables or (coffeescript) functions.
 
 exports.locals =
-  title: 'Welcome to Roots!'
+  title: 'IsItTheWeekendYet?'
   title_with_markup: ->
     "<h1 class='title'>#{this.title}</h1>"
 
