@@ -1,10 +1,7 @@
-// Add scripts to load to this array. These can be loaded remotely like jquery
-// is below, or can use file paths, like 'vendor/underscore'
-js = ["http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"];
+require(['time_keeper'], function (TimeKeeper) {
+  var timeKeeper = new TimeKeeper();
 
-// this will fire once the required scripts have been loaded
-require(js, function ($) {
-  $(function () {
-    console.log('jquery loaded, dom ready');
+  timeKeeper.watchClock(function (timer) {
+    console.log(timer);
   });
 });
