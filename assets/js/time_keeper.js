@@ -56,7 +56,7 @@ define(['clock'], function (Clock) {
     setInterval(function () {
       var remaining = self.clock.tick();
 
-      tickback(remaining);
+      tickback(_.extend({isWeekend: self.isWeekend()}, remaining));
 
       if (
         (remaining.hours === 0) &&
