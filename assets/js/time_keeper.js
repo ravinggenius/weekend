@@ -6,20 +6,23 @@ define(['clock'], function (Clock) {
     this.clock = new Clock(this.secondsToWind());
   };
 
+  TimeKeeper.prototype.isWeekend = function () {
+    var dayIndex = this.now.getDay();
+    var hourIndex = this.now.getHours();
+    return (
+      (dayIndex === 0) ||
+      ((dayIndex === 1) && (hourIndex < 8)) ||
+      ((dayIndex === 5) && (hourIndex >= 17)) ||
+      (dayIndex === 6)
+    );
+  };
+
   TimeKeeper.prototype.secondsToWind = function () {
-    var now = new Date();
+    var now = this.now = new Date();
     var hour = 60 * 60;
     var day = hour * 24;
     var dayIndex = now.getDay();
     var hourIndex = now.getHours();
-    var isWeekend = (function () {
-      return (
-        (dayIndex === 0) ||
-        ((dayIndex === 1) && (hourIndex < 8)) ||
-        ((dayIndex === 5) && (hourIndex >= 17)) ||
-        (dayIndex === 6)
-      );
-    })();
 
     var weekendStart = (hour * (24 - 17)) + day;
     var weekendEnd = day + (hour * 8);
@@ -28,7 +31,7 @@ define(['clock'], function (Clock) {
 
     var reply;
 
-    if (isWeekend) {
+    if (this.isWeekend()) {
       if ((dayIndex === 5) || (dayIndex === 6)) {
         elapsed += (day * (dayIndex - 5)) + (hour * (hourIndex - 17));
       }
