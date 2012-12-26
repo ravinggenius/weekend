@@ -8,7 +8,11 @@ define(function () {
 
   return function (snapshot) {
     var answer = snapshot.isWeekend ? 'Yes' : 'No';
-    var timeLeft = padLeft(snapshot.hours, 3) + ':' + padLeft(snapshot.minutes, 2) + ':' + padLeft(snapshot.seconds, 2);
+    var timeLeft = [
+      padLeft(snapshot.hours, 3),
+      padLeft(snapshot.minutes, 2),
+      padLeft(snapshot.seconds, 2)
+    ].join(':');
     console.log(answer, timeLeft);
   };
 });
