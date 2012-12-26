@@ -1,15 +1,14 @@
 define(function () {
-  var two = function (n) {
-    return ((n > 9) ? '' : '0') + n;
-  };
-
-  var three = function (n) {
-    return ((n > 99) ? '' : '0') + two(n);
+  // http://stackoverflow.com/a/9744576
+  var padLeft = function (number, padLength, padChar) {
+    padChar = (typeof padChar !== 'undefined') ? padChar : '0';
+    var pad = new Array(1 + padLength).join(padChar);
+    return (pad + number).slice(-Math.max(pad.length, number.toString().length));
   };
 
   return function (snapshot) {
     var answer = snapshot.isWeekend ? 'Yes' : 'No';
-    var timeLeft = three(snapshot.hours) + ':' + two(snapshot.minutes) + ':' + two(snapshot.seconds);
+    var timeLeft = padLeft(snapshot.hours, 3) + ':' + padLeft(snapshot.minutes, 2) + ':' + padLeft(snapshot.seconds, 2);
     console.log(answer, timeLeft);
   };
 });
