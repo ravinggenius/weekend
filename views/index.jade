@@ -1,11 +1,13 @@
-!= title_with_markup()
+p#answer Calculating...
 
-:markdown
-  **Whoo!** You got everything working. Now get to making cool things : )
+p#timer.time
+  span.time-segment.hour
+  span.time-separator :
+  span.time-segment.minute
+  span.time-separator :
+  span.time-segment.second
 
-include _partial
-
-p if you need help, feel free to get in touch with me directly.
-
-:coffeescript
-  # console.log 'you can even use coffeescript in your views, aw yeah'
+footer#credits
+  small#copyright
+    ©
+    a(href='http://www.ravinggenius.com/') Thomas Ingram

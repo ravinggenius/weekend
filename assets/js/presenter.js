@@ -6,13 +6,25 @@ define(function () {
     return (pad + number).slice(-Math.max(pad.length, number.toString().length));
   };
 
+  var body = $('html');
+
+  var answer = $('#answer');
+
+  var hour = $('#timer .hour');
+  var minute = $('#timer .minute');
+  var second = $('#timer .second');
+
   return function (snapshot) {
-    var answer = snapshot.isWeekend ? 'Yes' : 'No';
-    var timeLeft = [
-      padLeft(snapshot.hours, 3),
-      padLeft(snapshot.minutes, 2),
-      padLeft(snapshot.seconds, 2)
-    ].join(':');
-    console.log(answer, timeLeft);
+    // rgb(62, 59, 59) - rgb(0, 0, 0) weekend
+    // rgb(104, 59, 59) - rgb(0, 0, 0) weekdays
+    body.css({
+      backgroundColor: 'rgb(' + snapshot.hours + ', ' + snapshot.minutes + ', ' + snapshot.seconds + ')'
+    });
+
+    answer.text(snapshot.isWeekend ? 'Yes' : 'No');
+
+    hour.text(padLeft(snapshot.hours, 3));
+    minute.text(padLeft(snapshot.minutes, 2));
+    second.text(padLeft(snapshot.seconds, 2));
   };
 });
