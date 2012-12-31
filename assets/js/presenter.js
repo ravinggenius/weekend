@@ -6,7 +6,7 @@ define(function () {
     return (pad + number).slice(-Math.max(pad.length, number.toString().length));
   };
 
-  var body = $('html');
+  var body = $('#rainbow');
 
   var answer = $('#answer');
 

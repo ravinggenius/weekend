@@ -3,5 +3,38 @@
 normalize()
 base()
 
-body
-  padding: 50px
+// http://jsbin.com/acide4/8
+// http://snook.ca/archives/html_and_css/font-size-with-rem
+html
+  font-size: 62.5%
+
+#rainbow
+  transition(background-color 0.5s ease-in-out)
+  background-color: back-color
+  color: fore-color
+  a
+    color: fore-color
+
+#answer,
+#timer,
+#credits
+  text-align: center
+
+#answer
+  font-size: 15rem
+
+#timer
+  font-size: 7.5rem
+
+#credits
+  font-size: 2rem
+  padding: 0.5rem 0
+  width: 100%
+  @media (min-height: 40ex)
+    bottom: 0
+    position: fixed
+  a
+    color: #FFFFFF
+    display: inline-block
+    border-bottom: 1px dotted #FFFFFF
+    text-decoration: none
