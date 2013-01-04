@@ -7,10 +7,19 @@ base()
 // http://snook.ca/archives/html_and_css/font-size-with-rem
 html
   font-size: 62.5%
+  height: 100%
 
+rainbow-gradient-position = 50% 0%
+rainbow-gradient-start = rgba(255, 255, 255, 0.2)
+rainbow-gradient-stop = rgba(255, 255, 255, 0)
 #rainbow
   transition(background-color 0.5s ease-in-out)
   background-color: back-color
+  background-image: -webkit-radial-gradient(          rainbow-gradient-position, rainbow-gradient-start, rainbow-gradient-stop)
+  background-image:    -moz-radial-gradient(circle at rainbow-gradient-position, rainbow-gradient-start, rainbow-gradient-stop)
+  background-image:     -ms-radial-gradient(circle at rainbow-gradient-position, rainbow-gradient-start, rainbow-gradient-stop)
+  background-image:      -o-radial-gradient(circle at rainbow-gradient-position, rainbow-gradient-start, rainbow-gradient-stop)
+  background-image:         radial-gradient(circle at rainbow-gradient-position, rainbow-gradient-start, rainbow-gradient-stop)
   &,
   a
     color: fore-color
