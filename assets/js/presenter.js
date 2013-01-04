@@ -21,6 +21,10 @@ define(function () {
       backgroundColor: 'rgb(' + snapshot.hours + ', ' + snapshot.minutes + ', ' + snapshot.seconds + ')'
     });
 
+    body.removeClass('answer-yes');
+    body.removeClass('answer-no');
+    body.addClass(snapshot.isWeekend ? 'answer-yes' : 'answer-no');
+
     answer.text(snapshot.isWeekend ? 'Yes' : 'No');
 
     hour.text(padLeft(snapshot.hours, 3));
