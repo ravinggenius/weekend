@@ -1,29 +1,7 @@
 define(['clock'], function (Clock) {
-  var TimeKeeper = function (tickback) {
-    this.clock = new Clock();
-    this.checkTime();
-
-    this.clock.on('alarm', function () {
-      this.checkTime();
-      this.rewindClock();
-    }.bind(this));
-
-    this.clock.on('tick', function (snapshot) {
-      tickback(_.extend(snapshot, {isWeekend: this.isWeekend()}));
-    }.bind(this));
-  };
-
-  TimeKeeper.prototype.checkTime = function () {
-    this.now = new Date();
-  };
-
-  TimeKeeper.prototype.rewindClock = function () {
-    this.clock.windUp(this.secondsToWind());
-  };
-
-  TimeKeeper.prototype.isWeekend = function () {
-    var dayIndex = this.now.getDay();
-    var hourIndex = this.now.getHours();
+  isWeekend = function (now) {
+    var dayIndex = now.getDay();
+    var hourIndex = now.getHours();
 
     return (
       (dayIndex === 0) ||
@@ -33,20 +11,20 @@ define(['clock'], function (Clock) {
     );
   };
 
-  TimeKeeper.prototype.secondsToWind = function () {
+  secondsToWind = function (now) {
     var hour = 60 * 60;
     var day = hour * 24;
-    var dayIndex = this.now.getDay();
-    var hourIndex = this.now.getHours();
+    var dayIndex = now.getDay();
+    var hourIndex = now.getHours();
 
     var weekendStart = (hour * (24 - 17)) + day;
     var weekendEnd = day + (hour * 8);
     var weekendLength = weekendStart + weekendEnd;
-    var elapsed = (this.now.getMinutes() * 60) + this.now.getSeconds();
+    var elapsed = (now.getMinutes() * 60) + now.getSeconds();
 
     var reply;
 
-    if (this.isWeekend()) {
+    if (isWeekend(now)) {
       if ((dayIndex === 5) || (dayIndex === 6)) {
         elapsed += (day * (dayIndex - 5)) + (hour * (hourIndex - 17));
       }
@@ -61,6 +39,24 @@ define(['clock'], function (Clock) {
     }
 
     return reply;
+  };
+
+  var TimeKeeper = function (tickback) {
+    this.clock = new Clock();
+    this.checkTime();
+
+    this.clock.on('alarm', function () {
+      this.checkTime();
+      this.clock.windUp(secondsToWind(this.now));
+    }.bind(this));
+
+    this.clock.on('tick', function (snapshot) {
+      tickback(_.extend(snapshot, {isWeekend: isWeekend(this.now)}));
+    }.bind(this));
+  };
+
+  TimeKeeper.prototype.checkTime = function () {
+    this.now = new Date();
   };
 
   return TimeKeeper;
