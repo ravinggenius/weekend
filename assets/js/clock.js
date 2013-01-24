@@ -1,4 +1,4 @@
-define(function () {
+define(['components/eventEmitter/EventEmitter'], function (EventEmitter) {
   var initializeCounter = function (base60) {
     var reply = {};
 
@@ -14,8 +14,36 @@ define(function () {
     return reply;
   };
 
-  var Clock = function (startTime) {
-    this.counter = initializeCounter(startTime);
+  var Clock = function () {
+    var self = this;
+
+    this.counter = initializeCounter(0);
+
+    this.clock = new EventEmitter();
+
+    setInterval(function () {
+      self.tick();
+
+      if (
+        (self.counter.hours === 0) &&
+        (self.counter.minutes === 0) &&
+        (self.counter.seconds === 0)
+      ) {
+        self.ringBell();
+      }
+    }, 1000);
+  };
+
+  Clock.prototype.on = function (event, callback) {
+    this.clock.on(event, callback);
+  };
+
+  Clock.prototype.ringBell = function () {
+    this.clock.trigger('alarm');
+  };
+
+  Clock.prototype.windUp = function (secondsToWind) {
+    this.counter = initializeCounter(secondsToWind);
   };
 
   Clock.prototype.tick = function () {
@@ -32,11 +60,13 @@ define(function () {
       c.seconds = 59;
     }
 
-    return {
-      hours: c.hours,
-      minutes: c.minutes,
-      seconds: c.seconds
-    };
+    this.clock.trigger('tick', [
+      {
+        hours: c.hours,
+        minutes: c.minutes,
+        seconds: c.seconds
+      }
+    ]);
   };
 
   return Clock;

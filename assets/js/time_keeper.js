@@ -1,9 +1,25 @@
 define(['clock'], function (Clock) {
-  var TimeKeeper = function () {
+  var TimeKeeper = function (tickback) {
+    var self = this;
+    this.clock = new Clock();
+    this.checkTime();
+
+    this.clock.on('alarm', function () {
+      self.checkTime();
+      self.rewindClock();
+    });
+
+    this.clock.on('tick', function (snapshot) {
+      tickback(_.extend(snapshot, {isWeekend: self.isWeekend()}));
+    });
+  };
+
+  TimeKeeper.prototype.checkTime = function () {
+    this.now = new Date();
   };
 
   TimeKeeper.prototype.rewindClock = function () {
-    this.clock = new Clock(this.secondsToWind());
+    this.clock.windUp(this.secondsToWind());
   };
 
   TimeKeeper.prototype.isWeekend = function () {
@@ -18,16 +34,15 @@ define(['clock'], function (Clock) {
   };
 
   TimeKeeper.prototype.secondsToWind = function () {
-    var now = this.now = new Date();
     var hour = 60 * 60;
     var day = hour * 24;
-    var dayIndex = now.getDay();
-    var hourIndex = now.getHours();
+    var dayIndex = this.now.getDay();
+    var hourIndex = this.now.getHours();
 
     var weekendStart = (hour * (24 - 17)) + day;
     var weekendEnd = day + (hour * 8);
     var weekendLength = weekendStart + weekendEnd;
-    var elapsed = (now.getMinutes() * 60) + now.getSeconds();
+    var elapsed = (this.now.getMinutes() * 60) + this.now.getSeconds();
 
     var reply;
 
@@ -46,26 +61,6 @@ define(['clock'], function (Clock) {
     }
 
     return reply;
-  };
-
-  TimeKeeper.prototype.watchClock = function (tickback) {
-    var self = this;
-
-    this.rewindClock();
-
-    setInterval(function () {
-      var remaining = self.clock.tick();
-
-      tickback(_.extend({isWeekend: self.isWeekend()}, remaining));
-
-      if (
-        (remaining.hours === 0) &&
-        (remaining.minutes === 0) &&
-        (remaining.seconds === 0)
-      ) {
-        self.rewindClock();
-      }
-    }, 1000);
   };
 
   return TimeKeeper;
