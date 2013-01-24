@@ -24,6 +24,7 @@ define(['clock'], function (Clock) {
   TimeKeeper.prototype.isWeekend = function () {
     var dayIndex = this.now.getDay();
     var hourIndex = this.now.getHours();
+
     return (
       (dayIndex === 0) ||
       ((dayIndex === 1) && (hourIndex < 8)) ||

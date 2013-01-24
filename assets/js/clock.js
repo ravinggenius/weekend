@@ -16,7 +16,6 @@ define(['components/eventEmitter/EventEmitter'], function (EventEmitter) {
 
   var Clock = function () {
     this.counter = initializeCounter(0);
-
     this.clock = new EventEmitter();
 
     setInterval(function () {
@@ -27,17 +26,13 @@ define(['components/eventEmitter/EventEmitter'], function (EventEmitter) {
         (this.counter.minutes === 0) &&
         (this.counter.seconds === 0)
       ) {
-        this.ringBell();
+        this.clock.trigger('alarm');
       }
     }.bind(this), 1000);
   };
 
   Clock.prototype.on = function (event, callback) {
     this.clock.on(event, callback);
-  };
-
-  Clock.prototype.ringBell = function () {
-    this.clock.trigger('alarm');
   };
 
   Clock.prototype.windUp = function (secondsToWind) {
