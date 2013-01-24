@@ -1,7 +1,5 @@
 require(['presenter', 'time_keeper'], function (present, TimeKeeper) {
-  var timeKeeper = new TimeKeeper();
-
-  timeKeeper.watchClock(function (snapshot) {
+  new TimeKeeper(function (snapshot) {
     present(snapshot);
   });
 });

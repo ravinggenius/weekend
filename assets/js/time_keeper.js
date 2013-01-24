@@ -1,14 +1,8 @@
 define(['clock'], function (Clock) {
-  var TimeKeeper = function () {
-  };
+  isWeekend = function (now) {
+    var dayIndex = now.getDay();
+    var hourIndex = now.getHours();
 
-  TimeKeeper.prototype.rewindClock = function () {
-    this.clock = new Clock(this.secondsToWind());
-  };
-
-  TimeKeeper.prototype.isWeekend = function () {
-    var dayIndex = this.now.getDay();
-    var hourIndex = this.now.getHours();
     return (
       (dayIndex === 0) ||
       ((dayIndex === 1) && (hourIndex < 8)) ||
@@ -17,8 +11,7 @@ define(['clock'], function (Clock) {
     );
   };
 
-  TimeKeeper.prototype.secondsToWind = function () {
-    var now = this.now = new Date();
+  secondsToWind = function (now) {
     var hour = 60 * 60;
     var day = hour * 24;
     var dayIndex = now.getDay();
@@ -31,7 +24,7 @@ define(['clock'], function (Clock) {
 
     var reply;
 
-    if (this.isWeekend()) {
+    if (isWeekend(now)) {
       if ((dayIndex === 5) || (dayIndex === 6)) {
         elapsed += (day * (dayIndex - 5)) + (hour * (hourIndex - 17));
       }
@@ -48,24 +41,22 @@ define(['clock'], function (Clock) {
     return reply;
   };
 
-  TimeKeeper.prototype.watchClock = function (tickback) {
-    var self = this;
+  var TimeKeeper = function (tickback) {
+    this.clock = new Clock();
+    this.checkTime();
 
-    this.rewindClock();
+    this.clock.on('alarm', function () {
+      this.checkTime();
+      this.clock.windUp(secondsToWind(this.now));
+    }.bind(this));
 
-    setInterval(function () {
-      var remaining = self.clock.tick();
+    this.clock.on('tick', function (snapshot) {
+      tickback(_.extend(snapshot, {isWeekend: isWeekend(this.now)}));
+    }.bind(this));
+  };
 
-      tickback(_.extend({isWeekend: self.isWeekend()}, remaining));
-
-      if (
-        (remaining.hours === 0) &&
-        (remaining.minutes === 0) &&
-        (remaining.seconds === 0)
-      ) {
-        self.rewindClock();
-      }
-    }, 1000);
+  TimeKeeper.prototype.checkTime = function () {
+    this.now = new Date();
   };
 
   return TimeKeeper;
