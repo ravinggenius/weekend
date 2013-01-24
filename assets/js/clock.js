@@ -15,23 +15,21 @@ define(['components/eventEmitter/EventEmitter'], function (EventEmitter) {
   };
 
   var Clock = function () {
-    var self = this;
-
     this.counter = initializeCounter(0);
 
     this.clock = new EventEmitter();
 
     setInterval(function () {
-      self.tick();
+      this.tick();
 
       if (
-        (self.counter.hours === 0) &&
-        (self.counter.minutes === 0) &&
-        (self.counter.seconds === 0)
+        (this.counter.hours === 0) &&
+        (this.counter.minutes === 0) &&
+        (this.counter.seconds === 0)
       ) {
-        self.ringBell();
+        this.ringBell();
       }
-    }, 1000);
+    }.bind(this), 1000);
   };
 
   Clock.prototype.on = function (event, callback) {

@@ -1,17 +1,16 @@
 define(['clock'], function (Clock) {
   var TimeKeeper = function (tickback) {
-    var self = this;
     this.clock = new Clock();
     this.checkTime();
 
     this.clock.on('alarm', function () {
-      self.checkTime();
-      self.rewindClock();
-    });
+      this.checkTime();
+      this.rewindClock();
+    }.bind(this));
 
     this.clock.on('tick', function (snapshot) {
-      tickback(_.extend(snapshot, {isWeekend: self.isWeekend()}));
-    });
+      tickback(_.extend(snapshot, {isWeekend: this.isWeekend()}));
+    }.bind(this));
   };
 
   TimeKeeper.prototype.checkTime = function () {
