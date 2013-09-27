@@ -1,3 +1,6 @@
+// http://webreflection.blogspot.com/2013/07/eddyjs-bold-approach.html
+// https://github.com/WebReflection/eddy
+
 define(['components/eventEmitter/EventEmitter'], function (EventEmitter) {
   var initializeCounter = function (base60) {
     var reply = {};
