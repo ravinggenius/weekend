@@ -19,6 +19,12 @@ html
   //- add other scripts through require.js, not here
   script(data-main="js/main", src="js/require.js")
 
+  script.
+    var _gaq=[['_setAccount','UA-41029650-2'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src='//www.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)})(document,'script');
+
   //- this must be included for live reload to work in developement
   //- it will be automatically ignored when deployed
   != livereload
