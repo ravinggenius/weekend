@@ -37,6 +37,7 @@ module.exports = function (grunt) {
 				]
 			}
 		},
+
 		connect: {
 			options: {
 				port: 5000,
@@ -64,11 +65,13 @@ module.exports = function (grunt) {
 				}
 			}
 		},
+
 		open: {
 			server: {
 				path: 'http://localhost:<%= connect.options.port %>'
 			}
 		},
+
 		clean: {
 			dist: {
 				files: [
@@ -84,6 +87,7 @@ module.exports = function (grunt) {
 			},
 			server: '.tmp'
 		},
+
 		jshint: {
 			options: {
 				jshintrc: '.jshintrc'
@@ -93,6 +97,7 @@ module.exports = function (grunt) {
 				'js/{,*/}*.js'
 			]
 		},
+
 		compass: {
 			options: {
 				sassDir: 'styles',
@@ -115,17 +120,20 @@ module.exports = function (grunt) {
 				}
 			}
 		},
+
 		// not used since Uglify task does concat,
 		// but still available if needed
 		/*concat: {
 			dist: {}
 		},*/
+
 		// not enabled since usemin task does concat and uglify
 		// check index.html to edit your build targets
 		// enable this task if you prefer defining your build targets here
 		/*uglify: {
 			dist: {}
 		},*/
+
 		rev: {
 			dist: {
 				files: {
@@ -138,12 +146,14 @@ module.exports = function (grunt) {
 				}
 			}
 		},
+
 		useminPrepare: {
 			options: {
 				dest: 'build'
 			},
 			html: 'index.html'
 		},
+
 		usemin: {
 			options: {
 				dirs: ['build']
@@ -151,6 +161,7 @@ module.exports = function (grunt) {
 			html: ['build/{,*/}*.html'],
 			css: ['build/styles/{,*/}*.css']
 		},
+
 		imagemin: {
 			dist: {
 				files: [
@@ -163,6 +174,7 @@ module.exports = function (grunt) {
 				]
 			}
 		},
+
 		svgmin: {
 			dist: {
 				files: [
@@ -175,6 +187,7 @@ module.exports = function (grunt) {
 				]
 			}
 		},
+
 		cssmin: {
 			dist: {
 				files: {
@@ -184,6 +197,7 @@ module.exports = function (grunt) {
 				}
 			}
 		},
+
 		htmlmin: {
 			dist: {
 				options: {
@@ -207,6 +221,7 @@ module.exports = function (grunt) {
 				]
 			}
 		},
+
 		// Put files not handled in other tasks here
 		copy: {
 			dist: {
@@ -234,6 +249,7 @@ module.exports = function (grunt) {
 				]
 			}
 		},
+
 		concurrent: {
 			server: [
 				'compass:server'
