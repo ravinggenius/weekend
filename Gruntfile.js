@@ -20,8 +20,8 @@ module.exports = function (grunt) {
 		watch: {
 			compass: {
 				files: [
-					'styles/{,*/}*.css',
-					'styles/{,*/}*.{scss,sass}'
+					'app/styles/{,*/}*.css',
+					'app/styles/{,*/}*.{scss,sass}'
 				],
 				tasks: ['compass:server']
 			},
@@ -100,13 +100,13 @@ module.exports = function (grunt) {
 
 		compass: {
 			options: {
-				sassDir: 'styles',
+				sassDir: 'app/styles',
 				cssDir: '.tmp/styles',
 				generatedImagesDir: '.tmp/img/generated',
 				imagesDir: 'img',
 				javascriptsDir: 'js',
-				fontsDir: 'styles/fonts',
-				importPath: 'components',
+				fontsDir: 'app/fonts',
+				importPath: 'app/components',
 				httpImagesPath: '/img',
 				httpGeneratedImagesPath: '/img/generated',
 				relativeAssets: true,
@@ -235,7 +235,7 @@ module.exports = function (grunt) {
 							'*.{ico,txt}',
 							'.htaccess',
 							'img/{,*/}*.{webp,gif}',
-							'styles/fonts/*'
+							'app/fonts/*'
 						]
 					},
 					{
