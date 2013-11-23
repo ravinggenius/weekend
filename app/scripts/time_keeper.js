@@ -1,4 +1,6 @@
 (function (app) {
+	/* global _ */
+
 	'use strict';
 
 	var Clock = app.Clock;

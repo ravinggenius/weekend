@@ -1,5 +1,9 @@
 (function (app) {
+	/* global jQuery */
+
 	'use strict';
+
+	var $ = jQuery.noConflict();
 
 	// http://stackoverflow.com/a/9744576
 	var padLeft = function (number, padLength, padChar) {

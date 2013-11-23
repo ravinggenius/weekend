@@ -1,4 +1,6 @@
 (function (app) {
+	/* global EventEmitter */
+
 	'use strict';
 
 	var initializeCounter = function (base60) {
