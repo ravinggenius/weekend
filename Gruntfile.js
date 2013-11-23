@@ -77,7 +77,7 @@ module.exports = function (grunt) {
 			temp: {
 				options: {
 					loadPath: [
-						'app/components'
+						'app/vendor'
 					]
 				},
 				files: {
