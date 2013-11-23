@@ -1,5 +1,5 @@
 define(['clock'], function (Clock) {
-	isWeekend = function (now) {
+	var isWeekend = function (now) {
 		var dayIndex = now.getDay();
 		var hourIndex = now.getHours();
 
@@ -11,7 +11,7 @@ define(['clock'], function (Clock) {
 		);
 	};
 
-	secondsToWind = function (now) {
+	var secondsToWind = function (now) {
 		var hour = 60 * 60;
 		var day = hour * 24;
 		var dayIndex = now.getDay();
