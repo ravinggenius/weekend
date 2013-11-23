@@ -2,6 +2,7 @@
 	"name": "weekend",
 	"version": "0.0.0",
 	"dependencies": {
+		"eventEmitter": "~4.2.6",
 		"normalize-css": "~2.1.3"
 	}
 }
