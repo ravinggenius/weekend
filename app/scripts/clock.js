@@ -1,5 +1,6 @@
+(function (app) {
+	'use strict';
 
-define(['components/eventEmitter/EventEmitter'], function (EventEmitter) {
 	var initializeCounter = function (base60) {
 		var reply = {};
 
@@ -63,5 +64,5 @@ define(['components/eventEmitter/EventEmitter'], function (EventEmitter) {
 		]);
 	};
 
-	return Clock;
-});
+	app.Clock = Clock;
+})(window.APP);

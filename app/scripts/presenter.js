@@ -1,4 +1,6 @@
-define(function () {
+(function (app) {
+	'use strict';
+
 	// http://stackoverflow.com/a/9744576
 	var padLeft = function (number, padLength, padChar) {
 		padChar = (typeof padChar !== 'undefined') ? padChar : '0';
@@ -14,7 +16,7 @@ define(function () {
 	var minute = $('#timer .minute');
 	var second = $('#timer .second');
 
-	return function (snapshot) {
+	app.presenter = function (snapshot) {
 		// rgb(62, 59, 59) - rgb(0, 0, 0) weekend
 		// rgb(104, 59, 59) - rgb(0, 0, 0) weekdays
 		body.css({
@@ -31,4 +33,4 @@ define(function () {
 		minute.text(padLeft(snapshot.minutes, 2));
 		second.text(padLeft(snapshot.seconds, 2));
 	};
-});
+})(window.APP);

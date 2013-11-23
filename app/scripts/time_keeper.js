@@ -1,4 +1,8 @@
-define(['clock'], function (Clock) {
+(function (app) {
+	'use strict';
+
+	var Clock = app.Clock;
+
 	var isWeekend = function (now) {
 		var dayIndex = now.getDay();
 		var hourIndex = now.getHours();
@@ -61,5 +65,5 @@ define(['clock'], function (Clock) {
 		this.now = new Date();
 	};
 
-	return TimeKeeper;
-});
+	app.TimeKeeper = TimeKeeper;
+})(window.APP);
