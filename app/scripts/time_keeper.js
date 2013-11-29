@@ -49,7 +49,6 @@
 
 	var TimeKeeper = function (tickback) {
 		this.clock = new Clock();
-		this.checkTime();
 
 		this.clock.on('alarm', this.setAlarm.bind(this));
 
@@ -58,6 +57,8 @@
 				isWeekend: isWeekend(this.now)
 			}));
 		}.bind(this));
+
+		this.setAlarm();
 	};
 
 	TimeKeeper.prototype.checkTime = function () {
