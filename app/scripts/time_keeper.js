@@ -51,10 +51,7 @@
 		this.clock = new Clock();
 		this.checkTime();
 
-		this.clock.on('alarm', function () {
-			this.checkTime();
-			this.clock.windUp(secondsToWind(this.now));
-		}.bind(this));
+		this.clock.on('alarm', this.setAlarm.bind(this));
 
 		this.clock.on('tick', function (snapshot) {
 			tickback(_.extend(snapshot, {
@@ -65,6 +62,11 @@
 
 	TimeKeeper.prototype.checkTime = function () {
 		this.now = new Date();
+	};
+
+	TimeKeeper.prototype.setAlarm = function () {
+		this.checkTime();
+		this.clock.windUp(secondsToWind(this.now));
 	};
 
 	app.TimeKeeper = TimeKeeper;
