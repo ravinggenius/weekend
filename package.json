@@ -4,7 +4,7 @@
   "author": "Thomas Ingram",
   "license": "MIT",
   "description": "Simple application to countdown to the weekend during the work week.",
-  "readmeFilename": "README.markdown",
+  "readmeFilename": "README.md",
   "scripts": {
   },
   "keywords": [
