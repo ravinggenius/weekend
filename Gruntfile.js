@@ -21,15 +21,15 @@ module.exports = function (grunt) {
 				},
 				files: [
 					'.tmp/styles/**/*',
-					'app/**/*',
-					'!app/styles/**/*'
+					'source/**/*',
+					'!source/styles/**/*'
 				]
 			},
 			styles: {
 				options: {
 					livereload: false
 				},
-				files: 'app/styles/**/*.sass',
+				files: 'source/styles/**/*.sass',
 				tasks: [ 'sass' ]
 			}
 		},
@@ -45,7 +45,7 @@ module.exports = function (grunt) {
 						return [
 							lrSnippet,
 							mountFolder(connect, '.tmp'),
-							mountFolder(connect, 'app')
+							mountFolder(connect, 'source')
 						];
 					}
 				}
@@ -69,7 +69,7 @@ module.exports = function (grunt) {
 			},
 			all: [
 				'Gruntfile.js',
-				'app/scripts/**/*.js'
+				'source/scripts/**/*.js'
 			]
 		},
 
@@ -77,11 +77,11 @@ module.exports = function (grunt) {
 			temp: {
 				options: {
 					loadPath: [
-						'app/vendor'
+						'source/vendor'
 					]
 				},
 				files: {
-					'.tmp/styles/application.css': 'app/styles/application.sass'
+					'.tmp/styles/application.css': 'source/styles/application.sass'
 				}
 			}
 		},
@@ -91,7 +91,7 @@ module.exports = function (grunt) {
 				dest: 'build',
 				staging: '.tmp'
 			},
-			html: 'app/index.html'
+			html: 'source/index.html'
 		},
 
 		cssmin: {
@@ -109,7 +109,7 @@ module.exports = function (grunt) {
 				files: [
 					{
 						expand: true,
-						cwd: 'app',
+						cwd: 'source',
 						dest: 'build',
 						src: [
 							'index.html',
