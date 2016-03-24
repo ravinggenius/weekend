@@ -1,6 +1,6 @@
 {
   "name": "weekend",
-  "version": "0.0.0",
+  "version": "0.3.0",
   "author": "Thomas Ingram",
   "license": "MIT",
   "description": "Simple application to countdown to the weekend during the work week.",
