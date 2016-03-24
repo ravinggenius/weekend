@@ -1,42 +1,42 @@
 {
-	"name": "weekend",
-	"version": "0.0.0",
-	"author": "Thomas Ingram",
-	"license": "MIT",
-	"description": "Simple application to countdown to the weekend during the work week.",
-	"readmeFilename": "README.markdown",
-	"main": "Gruntfile.js",
-	"scripts": {
-		"test": "grunt test"
-	},
-	"keywords": [
-		"countdown",
-		"weekend"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/ravinggenius/weekend"
-	},
-	"engines": {
-		"node": ">=0.8.0"
-	},
-	"dependencies": {},
-	"devDependencies": {
-		"bower": "~1.2.7",
-		"connect-livereload": "~0.1.4",
-		"grunt": "~0.4.1",
-		"grunt-contrib-clean": "~0.4.0",
-		"grunt-contrib-concat": "~0.1.3",
-		"grunt-contrib-connect": "~0.2.0",
-		"grunt-contrib-copy": "~0.4.1",
-		"grunt-contrib-cssmin": "~0.6.0",
-		"grunt-contrib-jshint": "~0.4.1",
-		"grunt-contrib-sass": "~0.5.1",
-		"grunt-contrib-uglify": "~0.2.0",
-		"grunt-contrib-watch": "~0.4.0",
-		"grunt-open": "~0.2.0",
-		"grunt-rev": "~0.1.0",
-		"grunt-usemin": "~0.1.10",
-		"matchdep": "~0.1.1"
-	}
+  "name": "weekend",
+  "version": "0.0.0",
+  "author": "Thomas Ingram",
+  "license": "MIT",
+  "description": "Simple application to countdown to the weekend during the work week.",
+  "readmeFilename": "README.markdown",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "keywords": [
+    "countdown",
+    "weekend"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ravinggenius/weekend"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "bower": "~1.2.7",
+    "connect-livereload": "~0.1.4",
+    "grunt": "~0.4.1",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-concat": "~0.1.3",
+    "grunt-contrib-connect": "~0.2.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-cssmin": "~0.6.0",
+    "grunt-contrib-jshint": "~0.4.1",
+    "grunt-contrib-sass": "~0.5.1",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-watch": "~0.4.0",
+    "grunt-open": "~0.2.0",
+    "grunt-rev": "~0.1.0",
+    "grunt-usemin": "~0.1.10",
+    "matchdep": "~0.1.1"
+  }
 }
