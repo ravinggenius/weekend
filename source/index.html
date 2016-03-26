@@ -10,43 +10,28 @@
 		<meta name="viewport" content="width=device-width" />
 
 		<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
-		<link rel="stylesheet" href="/styles/application.css" />
-
-		<script async="async" defer="defer" src="vendor/system.js"></script>
-		<script async="async" defer="defer" src="config.js"></script>
-		<script defer="defer">
-			System.import('main.js');
-		</script>
 	</head>
 
-	<body id="rainbow">
+	<body>
 		<main role="main">
-			<section id="answer">Calculating...</section>
-			<section id="timer" class="time"><span class="time-segment hour">000</span><span class="time-separator">:</span><span class="time-segment minute">00</span><span class="time-separator">:</span><span class="time-segment second">00</span></section>
+			<article>
+				<section class="answer">Calculating...</section>
+			</article>
 		</main>
 
-		<footer id="credits"><small id="copyright">©<a href="http://www.ravinggenius.com/">Thomas Ingram</a></small></footer>
+		<footer class="credits">
+			<small class="copyright">©<a href="http://www.ravinggenius.com/">Thomas Ingram</a></small>
+		</footer>
 
-		<script>
+		<script src="vendor/system.js"></script>
+		<script src="config.js"></script>
+		<script>System.import('main');</script>
+
+		<script defer="defer">
 			var _gaq=[['_setAccount','UA-41029650-2'],['_trackPageview']];
 			(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
 			g.src='//www.google-analytics.com/ga.js';
 			s.parentNode.insertBefore(g,s)})(document,'script');
 		</script>
-
-		<!-- build:js /scripts/vendor.js -->
-		<script src="/vendor/eventEmitter/EventEmitter.js"></script>
-		<script src="/vendor/jquery/jquery.js"></script>
-		<script src="/vendor/lodash/dist/lodash.js"></script>
-		<!-- endbuild -->
-
-		<!-- build:js /scripts/application.js -->
-		<script src="/scripts/application.js"></script>
-		<script src="/scripts/clock.js"></script>
-		<script src="/scripts/presenter.js"></script>
-		<script src="/scripts/time_keeper.js"></script>
-		<script src="/scripts/driver.js"></script>
-		<!-- endbuild -->
 	</body>
 </html>
