@@ -19,5 +19,19 @@
     "node": ">=0.8.0"
   },
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "jspm": "^0.16.31"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "source",
+      "packages": "source/vendor"
+    },
+    "dependencies": {},
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
 }
