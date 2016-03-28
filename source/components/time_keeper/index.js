@@ -47,9 +47,8 @@ export default class {
 
 		this.clock.on('alarm', this.setAlarm.bind(this));
 
-		this.clock.on('tick', function (snapshot) {
-			snapshot.isWeekend = isWeekend(this.checkTime());
-			tickback(snapshot);
+		this.clock.on('tick', function (timeRemaining) {
+			tickback(isWeekend(this.checkTime()), timeRemaining);
 		}.bind(this));
 
 		this.setAlarm();

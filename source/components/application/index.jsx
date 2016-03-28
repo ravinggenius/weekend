@@ -9,8 +9,8 @@ const padLeft = function (number, padLength, padChar) {
 
 export default class extends React.Component {
 	render() {
-		const snapshot = this.props.snapshot;
-		const { isWeekend, hours, minutes, seconds } = this.props.snapshot;
+		const isWeekend = this.props.isWeekend;
+		const { hours, minutes, seconds } = this.props.timeRemaining;
 
 		document.body.style.backgroundColor = `rgb(${hours}, ${minutes}, ${seconds})`;
 

@@ -6,8 +6,9 @@ import TimeKeeper from './components/time_keeper/index';
 
 const main = document.getElementsByTagName('main')[0];
 
-new TimeKeeper(function (snapshot) {
+new TimeKeeper(function (isWeekend, timeRemaining) {
 	ReactDOM.render(React.createElement(Application, {
-		snapshot: snapshot
+		isWeekend: isWeekend,
+		timeRemaining: timeRemaining
 	}), main);
 });
