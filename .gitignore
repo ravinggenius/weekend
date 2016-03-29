@@ -1,4 +1,5 @@
 .sass-cache
 .tmp
 build
-private.json
+node_modules
+source/vendor
