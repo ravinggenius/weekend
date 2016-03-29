@@ -1,23 +1,25 @@
 import ee from 'event-emitter';
 
-const initializeCounter = function (base60) {
-	let reply = {};
+const formatForTick = function (remaining) {
+	remaining = remaining / 60 / 60;
+	const hours = Math.floor(remaining);
 
-	base60 = base60 / 60 / 60;
-	reply.hours = Math.floor(base60);
+	remaining = (remaining - Math.floor(remaining)) * 60;
+	const minutes = Math.floor(remaining);
 
-	base60 = (base60 - Math.floor(base60)) * 60;
-	reply.minutes = Math.floor(base60);
+	remaining = (remaining - Math.floor(remaining)) * 60;
+	const seconds = Math.round(remaining);
 
-	base60 = (base60 - Math.floor(base60)) * 60;
-	reply.seconds = Math.round(base60);
-
-	return reply;
+	return {
+		hours: hours,
+		minutes: minutes,
+		seconds: seconds
+	};
 };
 
 export default class {
 	constructor() {
-		this.counter = initializeCounter(0);
+		this.counter = 0;
 		this.events = ee({});
 
 		setInterval(function () {
@@ -31,37 +33,17 @@ export default class {
 	}
 
 	windUp(secondsToWind) {
-		this.counter = initializeCounter(secondsToWind);
+		this.counter = secondsToWind;
 	}
 
 	alarm() {
-		const isZero = (this.counter.hours === 0) &&
-			(this.counter.minutes === 0) &&
-			(this.counter.seconds === 0);
-
-		if (isZero) {
+		if (this.counter === 0) {
 			this.events.emit('alarm');
 		}
 	}
 
 	tick() {
-		let c = this.counter;
-
-		if (c.seconds > 0) {
-			c.seconds = c.seconds - 1;
-		} else if (c.minutes > 0) {
-			c.minutes = c.minutes - 1;
-			c.seconds = 59;
-		} else if (c.hours > 0) {
-			c.hours = c.hours - 1;
-			c.minutes = 59;
-			c.seconds = 59;
-		}
-
-		this.events.emit('tick', {
-			hours: c.hours,
-			minutes: c.minutes,
-			seconds: c.seconds
-		});
+		this.counter = this.counter - 1;
+		this.events.emit('tick', formatForTick(this.counter));
 	}
 }
