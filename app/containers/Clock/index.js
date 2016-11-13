@@ -1,5 +1,6 @@
 import React from 'react';
 import Color from 'color';
+import ReactBody from 'react-body';
 
 import Answer from 'components/Answer';
 import ClockFace from 'components/ClockFace';
@@ -42,13 +43,11 @@ export default class extends React.Component {
       b: scale(parts.seconds, 59)
     });
 
-    document.body.classList.remove(appStyles.isDark);
-    document.body.classList.remove(appStyles.isLight);
-    document.body.classList.add(color.dark() ? appStyles.isDark : appStyles.isLight);
-
     document.body.style.backgroundColor = color.hexString();
 
     return <article className={styles.clock}>
+      <ReactBody className={appStyles.isDark} if={color.dark()} />
+      <ReactBody className={appStyles.isLight} if={color.light()} />
       <Answer isWeekend={happy} />
       <ClockFace {...parts} />
     </article>;

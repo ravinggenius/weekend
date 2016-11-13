@@ -12,6 +12,7 @@
  */
 
 import React from 'react';
+import ReactBody from 'react-body';
 
 import Clock from 'containers/Clock';
 import Credits from 'components/Credits';
@@ -23,13 +24,10 @@ export default class App extends React.Component { // eslint-disable-line react/
     children: React.PropTypes.node
   };
 
-  componentDidMount() {
-    document.body.classList.add(styles.isDark);
-    document.body.classList.add(styles.rainbow);
-  }
-
   render() {
     return <main className={styles.container} role="main">
+      <ReactBody className={styles.rainbow} />
+      <ReactBody className={styles.isDark} />
       <Clock />
       {React.Children.toArray(this.props.children)}
       <Credits />
