@@ -3,8 +3,9 @@ import React from 'react';
 import styles from './styles.css';
 
 export default function Answer(props) {
+  const className = props.isWeekend ? styles.answerYes : styles.answerNo;
   const answer = props.isWeekend ? 'Yes' : 'Nope';
-  return <section className={styles.answer}>{answer}</section>;
+  return <section className={className}>{answer}</section>;
 }
 
 Answer.propTypes = {

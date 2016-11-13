@@ -1,8 +1,12 @@
-.answer {
-  font-family: monospace;
+.answerYes,
+.answerNo {
   font-size: 15rem;
 }
 
-:global(.fontLoaded-Henny-Penny) .answer {
+:global(.fontLoaded-Henny-Penny) .answerYes {
   font-family: 'Henny Penny', cursive;
+}
+
+:global(.fontLoaded-Special-Elite) .answerNo {
+  font-family: 'Special Elite', sans-serif;
 }

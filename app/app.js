@@ -41,6 +41,12 @@ new FontFaceObserver('Henny Penny', {}).load().then(() => {
   document.body.classList.remove('fontLoaded-Henny-Penny');
 });
 
+new FontFaceObserver('Special Elite', {}).load().then(() => {
+  document.body.classList.add('fontLoaded-Special-Elite');
+}, () => {
+  document.body.classList.remove('fontLoaded-Special-Elite');
+});
+
 // Create redux store with history
 // this uses the singleton browserHistory provided by react-router
 // Optionally, this could be changed to leverage a created history
