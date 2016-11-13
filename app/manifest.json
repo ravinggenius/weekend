@@ -1,5 +1,6 @@
 {
-  "name": "Less Longer",
+  "name": "IsItTheWeekendYet?",
+  "short_name": "Weekend?",
   "icons": [
     {
       "src": "favicon.png",
@@ -26,8 +27,8 @@
       "density": 4.0
     }
   ],
-  "start_url": "index.html",
+  "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#FFFFFF"
+  "background_color": "#000000"
 }
