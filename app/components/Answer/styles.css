@@ -1,0 +1,12 @@
+.answerYes,
+.answerNo {
+  font-size: 15rem;
+}
+
+:global(.font-Henny-Penny) .answerYes {
+  font-family: 'Henny Penny', cursive;
+}
+
+:global(.font-Special-Elite) .answerNo {
+  font-family: 'Special Elite', sans-serif;
+}
