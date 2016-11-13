@@ -15,6 +15,7 @@ import 'file?name=[name].[ext]!./.htaccess';
 // Import all the third party stuff
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ReactGA from 'react-ga';
 import { Provider } from 'react-redux';
 import { applyRouterMiddleware, Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
@@ -56,6 +57,12 @@ const rootRoute = {
   childRoutes: createRoutes(store)
 };
 
+ReactGA.initialize('UA-41029650-2');
+
+function logPageViews() {
+  ReactGA.set({ page: window.location.pathname });
+  ReactGA.pageview(window.location.pathname);
+}
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
@@ -67,6 +74,7 @@ const render = (translatedMessages) => {
         <Router
           history={history}
           routes={rootRoute}
+          onUpdate={logPageViews}
           render={
             // Scroll to top when going to a new page, imitating default browser
             // behaviour
