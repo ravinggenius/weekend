@@ -4,6 +4,6 @@
   text-align: center;
 }
 
-:global(.fontLoaded-Geo) .clockFace {
+:global(.font-Geo) .clockFace {
   font-family: Geo, monospace;
 }

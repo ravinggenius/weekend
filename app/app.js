@@ -18,7 +18,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { applyRouterMiddleware, Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
-import FontFaceObserver from 'fontfaceobserver';
+import { observeFont } from './utils/fonts';
 import { useScroll } from 'react-router-scroll';
 import LanguageProvider from 'containers/LanguageProvider';
 import configureStore from './store';
@@ -29,23 +29,9 @@ import { translationMessages } from './i18n';
 // Import the CSS reset, which HtmlWebpackPlugin transfers to the build folder
 import 'sanitize.css/sanitize.css';
 
-new FontFaceObserver('Geo', {}).load().then(() => {
-  document.body.classList.add('fontLoaded-Geo');
-}, () => {
-  document.body.classList.remove('fontLoaded-Geo');
-});
-
-new FontFaceObserver('Henny Penny', {}).load().then(() => {
-  document.body.classList.add('fontLoaded-Henny-Penny');
-}, () => {
-  document.body.classList.remove('fontLoaded-Henny-Penny');
-});
-
-new FontFaceObserver('Special Elite', {}).load().then(() => {
-  document.body.classList.add('fontLoaded-Special-Elite');
-}, () => {
-  document.body.classList.remove('fontLoaded-Special-Elite');
-});
+observeFont('Geo');
+observeFont('Henny Penny');
+observeFont('Special Elite');
 
 // Create redux store with history
 // this uses the singleton browserHistory provided by react-router
