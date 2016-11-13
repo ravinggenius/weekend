@@ -1,5 +1,6 @@
 import React from 'react';
 import Color from 'color';
+import Helmet from 'react-helmet';
 import ReactBody from 'react-body';
 
 import Answer from 'components/Answer';
@@ -46,6 +47,11 @@ export default class extends React.Component {
     document.body.style.backgroundColor = color.hexString();
 
     return <article className={styles.clock}>
+      <Helmet
+        meta={[
+          { name: 'theme-color', content: color.hexString() }
+        ]}
+      />
       <ReactBody className={appStyles.isDark} if={color.dark()} />
       <ReactBody className={appStyles.isLight} if={color.light()} />
       <Answer isWeekend={happy} />
