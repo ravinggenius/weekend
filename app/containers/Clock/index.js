@@ -8,14 +8,13 @@ import styles from './styles.css';
 import appStyles from 'containers/App/styles.css';
 
 import { scale } from '../../utils/color';
-import { isWeekend, labelParts, secondsRemaining } from '../../utils/time';
+import { isWeekend, partsRemaining } from '../../utils/time';
 
 export default class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isWeekend: null,
-      remaining: 0
+      now: new Date()
     };
   }
 
@@ -28,20 +27,17 @@ export default class extends React.Component {
   }
 
   tick = () => {
-    const now = new Date();
-
     this.setState({
-      isWeekend: isWeekend(now),
-      remaining: secondsRemaining(now)
+      now: new Date()
     });
   }
 
   render() {
-    const isWeekend = this.state.isWeekend;
-    const parts = labelParts(this.state.remaining);
+    const happy = isWeekend(this.state.now);
+    const parts = partsRemaining(this.state.now);
 
-    const color = Color({
-      r: scale(parts.hours, isWeekend ? 62 : 104),
+    const color = new Color({
+      r: scale(parts.hours, happy ? 62 : 104),
       g: scale(parts.minutes, 59),
       b: scale(parts.seconds, 59)
     });
@@ -53,7 +49,7 @@ export default class extends React.Component {
     document.body.style.backgroundColor = color.hexString();
 
     return <article className={styles.clock}>
-      <Answer isWeekend={isWeekend} />
+      <Answer isWeekend={happy} />
       <ClockFace {...parts} />
     </article>;
   }

@@ -1,15 +1,16 @@
 /* from http://www.fontsquirrel.com/ */
 @font-face {
   font-family: 'Heavy-Data';
-  src: url(/fonts/Heavy-Data/heavy_data-webfont.eot);
-  src: url(/fonts/Heavy-Data/heavy_data-webfont.eot?#iefix) format('eot'),
-       url(/fonts/Heavy-Data/heavy_data-webfont.woff) format('woff'),
-       url(/fonts/Heavy-Data/heavy_data-webfont.ttf) format('truetype'),
-       url(/fonts/Heavy-Data/heavy_data-webfont.svg#HeavyDataRegular) format('svg');
+  src: url(./Heavy-Data/heavy_data-webfont.eot);
+  src:
+    url(./Heavy-Data/heavy_data-webfont.eot?#iefix) format('eot'),
+    url(./Heavy-Data/heavy_data-webfont.woff) format('woff'),
+    url(./Heavy-Data/heavy_data-webfont.ttf) format('truetype'),
+    url(./Heavy-Data/heavy_data-webfont.svg#HeavyDataRegular) format('svg');
 }
 
 .clockFace {
-  font-family: 'Heavy-Data', monospace;
+  font-family: Heavy-Data, monospace;
   font-size: 7.5rem;
   text-align: center;
 }

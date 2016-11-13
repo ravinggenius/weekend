@@ -1,4 +1,4 @@
-const isWeekend = module.exports.isWeekend = function (now) {
+export function isWeekend(now) {
   const dayIndex = now.getDay();
   const hourIndex = now.getHours();
 
@@ -6,26 +6,9 @@ const isWeekend = module.exports.isWeekend = function (now) {
     ((dayIndex === 1) && (hourIndex < 8)) ||
     ((dayIndex === 5) && (hourIndex >= 17)) ||
     (dayIndex === 6);
-};
+}
 
-const labelParts = module.exports.labelParts = function (remaining) {
-  remaining = remaining / 60 / 60;
-  const hours = Math.floor(remaining);
-
-  remaining = (remaining - Math.floor(remaining)) * 60;
-  const minutes = Math.floor(remaining);
-
-  remaining = (remaining - Math.floor(remaining)) * 60;
-  const seconds = Math.round(remaining);
-
-  return {
-    hours: hours,
-    minutes: minutes,
-    seconds: seconds
-  };
-};
-
-const secondsRemaining = module.exports.secondsRemaining = function (now) {
+export function partsRemaining(now) {
   const hour = 60 * 60;
   const day = hour * 24;
   const dayIndex = now.getDay();
@@ -37,7 +20,7 @@ const secondsRemaining = module.exports.secondsRemaining = function (now) {
 
   let elapsed = (now.getMinutes() * 60) + now.getSeconds();
 
-  let reply;
+  let remaining;
 
   if (isWeekend(now)) {
     if ((dayIndex === 5) || (dayIndex === 6)) {
@@ -47,11 +30,20 @@ const secondsRemaining = module.exports.secondsRemaining = function (now) {
       elapsed += (hour * (24 - 17)) + day;
       elapsed += (day * dayIndex) + (hour * hourIndex);
     }
-    reply = weekendLength - elapsed;
+    remaining = weekendLength - elapsed;
   } else {
     elapsed += (day * (dayIndex - 1)) + (hour * (hourIndex - 8));
-    reply = (day * 7) - weekendLength - elapsed;
+    remaining = (day * 7) - weekendLength - elapsed;
   }
 
-  return reply;
-};
+  remaining = remaining / 60 / 60;
+  const hours = Math.floor(remaining);
+
+  remaining = (remaining - Math.floor(remaining)) * 60;
+  const minutes = Math.floor(remaining);
+
+  remaining = (remaining - Math.floor(remaining)) * 60;
+  const seconds = Math.round(remaining);
+
+  return { hours, minutes, seconds };
+}

@@ -1,6 +1,6 @@
 const ConfConf = require('conf_conf');
 
-module.exports = ConfConf.configure(process.env, function (conf) {
+module.exports = ConfConf.configure(process.env, (conf) => {
   conf.config('enableTunnel', { default: false });
 
   conf.config('logFormat', {
