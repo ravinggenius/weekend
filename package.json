@@ -16,7 +16,15 @@
   "bugs": {
     "url": "https://github.com/ravinggenius/weekend/issues"
   },
-  "scripts": {},
-  "dependencies": {},
-  "devDependencies": {}
+  "scripts": {
+    "start": "rollup --config --watch"
+  },
+  "dependencies": {
+    "hyperhtml": "^2.6.0"
+  },
+  "devDependencies": {
+    "rollup": "^0.56.5",
+    "rollup-plugin-node-resolve": "^3.2.0",
+    "rollup-plugin-serve": "^0.4.2"
+  }
 }
