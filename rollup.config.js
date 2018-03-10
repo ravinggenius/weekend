@@ -1,3 +1,4 @@
+import postCss from 'rollup-plugin-postcss';
 import resolve from 'rollup-plugin-node-resolve';
 import serve from 'rollup-plugin-serve';
 
@@ -16,6 +17,10 @@ export default {
 			module: true,
 			jsnext: true,
 			main: true
+		}),
+		postCss({
+			extract: true,
+			modules: true
 		}),
 		serve({
 			contentBase: [
