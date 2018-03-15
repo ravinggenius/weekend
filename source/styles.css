@@ -35,10 +35,16 @@ main {
 
 :global(small.credits) {
 	bottom: 0;
-	font-size: 1.667rem;
+	font-size: 2.4rem;
 	line-height: 1;
 	padding: 0.5rem;
 	position: absolute;
+}
+
+@media (max-width: 800px) {
+	:global(small.credits) {
+		font-size: 3vw;
+	}
 }
 
 :global(small.credits) a {

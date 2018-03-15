@@ -1,6 +1,6 @@
 .clockFace {
 	display: flex;
 	font-family: Geo, monospace;
-	font-size: 9rem;
+	font-size: 20vw;
 	width: min-content;
 }
