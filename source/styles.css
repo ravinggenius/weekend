@@ -1,0 +1,47 @@
+html {
+	font-size: 62.5%;
+	height: 100%;
+}
+
+body {
+	align-items: center;
+	background-color: #000000;
+	background-image: radial-gradient(
+		circle at 50% 0%,
+		rgba(255, 255, 255, 0.2),
+		rgba(255, 255, 255, 0)
+	);
+	display: flex;
+	font-family: sans-serif;
+	height: 100vh;
+	justify-content: center;
+	margin: 0;
+	transition: all 0.5s ease-in-out;
+}
+
+:global(body.isDark) {
+	color: rgba(255, 255, 255, 0.8);
+}
+
+:global(body.isLight) {
+	color: rgba(0, 0, 0, 0.6);
+}
+
+main {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+}
+
+:global(small.credits) {
+	bottom: 0;
+	font-size: 1.667rem;
+	line-height: 1;
+	padding: 0.5rem;
+	position: absolute;
+}
+
+:global(small.credits) a {
+	color: currentColor;
+	text-decoration: underline;
+}

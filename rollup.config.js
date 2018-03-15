@@ -1,3 +1,4 @@
+import commonJs from 'rollup-plugin-commonjs';
 import postCss from 'rollup-plugin-postcss';
 import resolve from 'rollup-plugin-node-resolve';
 import serve from 'rollup-plugin-serve';
@@ -18,6 +19,7 @@ export default {
 			jsnext: true,
 			main: true
 		}),
+		commonJs(),
 		postCss({
 			extract: true,
 			modules: true
