@@ -60,28 +60,46 @@ const partsRemaining = (now) => {
 	return { hours, minutes, seconds };
 };
 
-const themeColor = document.querySelector('meta[name="theme-color"]');
+let previous = {};
 
-const render = (root, now) => {
-	const happy = isWeekend(now);
-	const parts = partsRemaining(now);
+const shouldRender = (parts) => {
+	const reply = (previous.seconds !== parts.seconds) ||
+		(previous.minutes !== parts.minutes) ||
+		(previous.hours !== parts.hours);
 
-	const color = new Color({
-		r: scale(parts.hours, happy ? 62 : 104),
-		g: scale(parts.minutes, 59),
-		b: scale(parts.seconds, 59)
-	});
+	if (reply) {
+		previous = parts;
+	}
 
-	document.body.classList.toggle('isDark', color.isDark());
-	document.body.classList.toggle('isLight', color.isLight());
-	document.body.style.backgroundColor = color.hex();
-
-	themeColor.setAttribute('content', color.hex());
-
-	root`
-		${answer(isWeekend(now))}
-		${clock(parts)}
-	`;
+	return reply;
 };
 
-setInterval((root) => render(root, new Date()), 1000 / 20, bind(document.querySelector('main')));
+const root = bind(document.querySelector('main'));
+const themeColor = document.querySelector('meta[name="theme-color"]');
+
+const render = (now) => {
+	const parts = partsRemaining(now);
+
+	if (shouldRender(parts)) {
+		const happy = isWeekend(now);
+
+		const color = new Color({
+			r: scale(parts.hours, happy ? 62 : 104),
+			g: scale(parts.minutes, 59),
+			b: scale(parts.seconds, 59)
+		});
+
+		document.body.classList.toggle('isDark', color.isDark());
+		document.body.classList.toggle('isLight', color.isLight());
+		document.body.style.backgroundColor = color.hex();
+
+		themeColor.setAttribute('content', color.hex());
+
+		root`
+			${answer(happy)}
+			${clock(parts)}
+		`;
+	}
+};
+
+setInterval(() => render(new Date()), 1000 / 20);
