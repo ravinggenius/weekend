@@ -19,11 +19,11 @@ body {
 	transition: all 0.5s ease-in-out;
 }
 
-:global(body.isDark) {
+:global(body.is-dark) {
 	color: rgba(255, 255, 255, 0.8);
 }
 
-:global(body.isLight) {
+:global(body.is-light) {
 	color: rgba(0, 0, 0, 0.6);
 }
 
@@ -31,6 +31,29 @@ main {
 	align-items: center;
 	display: flex;
 	flex-direction: column;
+}
+
+:global(.answer-yes),
+:global(.answer-no) {
+	font-size: 30vw;
+	margin: 0;
+	width: min-content;
+}
+
+:global(.answer-yes) {
+	font-family: 'Henny Penny', cursive;
+}
+
+:global(.answer-no) {
+	font-family: 'Special Elite', sans-serif;
+}
+
+:global(.answer),
+:global(.clock) {
+	display: flex;
+	font-family: Geo, monospace;
+	font-size: 20vw;
+	width: min-content;
 }
 
 :global(small.credits) {

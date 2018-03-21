@@ -1,8 +1,4 @@
 import Color from 'color';
-import { bind } from 'hyperhtml';
-
-import answer from './components/answer';
-import clock from './components/clock';
 
 import './styles.css';
 
@@ -74,8 +70,16 @@ const shouldRender = (parts) => {
 	return reply;
 };
 
-const root = bind(document.querySelector('main'));
 const themeColor = document.querySelector('meta[name="theme-color"]');
+
+const answer = document.querySelector('.answer');
+answer.classList.remove('answer');
+
+const clock = {
+	hours: document.querySelector('.clock .hours'),
+	minutes: document.querySelector('.clock .minutes'),
+	seconds: document.querySelector('.clock .seconds')
+};
 
 const render = (now) => {
 	const parts = partsRemaining(now);
@@ -89,16 +93,20 @@ const render = (now) => {
 			b: scale(parts.seconds, 59)
 		});
 
-		document.body.classList.toggle('isDark', color.isDark());
-		document.body.classList.toggle('isLight', color.isLight());
+		document.body.classList.toggle('is-dark', color.isDark());
+		document.body.classList.toggle('is-light', color.isLight());
 		document.body.style.backgroundColor = color.hex();
 
 		themeColor.setAttribute('content', color.hex());
 
-		root`
-			${answer(happy)}
-			${clock(parts)}
-		`;
+		answer.classList.toggle('answer-yes', happy);
+		answer.classList.toggle('answer-no', !happy);
+
+		answer.textContent = happy ? 'Yes!' : 'nope';
+
+		clock.hours.textContent = parts.hours.toString().padStart(3, '0');
+		clock.minutes.textContent = parts.minutes.toString().padStart(2, '0');
+		clock.seconds.textContent = parts.seconds.toString().padStart(2, '0');
 	}
 };
 
