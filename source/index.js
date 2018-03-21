@@ -47,4 +47,10 @@ const render = (now) => {
 	}
 };
 
-setInterval(() => render(new Date()), 1000 / 20);
+const query = new URL(document.location).searchParams;
+
+if (query.has('pause')) {
+	render(new Date());
+} else {
+	setInterval(() => render(new Date()), 1000 / 20);
+}
