@@ -2,6 +2,7 @@ import Color from 'color';
 
 import isWeekend from './application/isWeekend';
 import partsRemaining from './application/partsRemaining';
+import remainingSeconds from './application/remainingSeconds';
 import scale from './application/scale';
 import shouldRender from './application/shouldRender';
 
@@ -50,7 +51,22 @@ const render = (now) => {
 const query = new URL(document.location).searchParams;
 
 if (query.has('pause')) {
-	render(new Date());
+	const hms = query.get('pause');
+	const pattern = /^\d+:\d+:\d+$/;
+
+	if (hms && pattern.test(hms)) {
+		const [ h, m, s ] = hms.split(':').map(_ => Number.parseInt(_, 10));
+		const now = new Date();
+
+		const remaining = remainingSeconds(now);
+		const offset = remaining - (h * 60 * 60) - (m * 60) - s;
+
+		now.setTime(now.getTime() + (offset * 1000));
+
+		render(now);
+	} else {
+		render(new Date());
+	}
 } else {
 	setInterval(() => render(new Date()), 1000 / 20);
 }
