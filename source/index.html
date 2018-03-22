@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+
+		<link rel="manifest" href="manifest.json" />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+		<meta name="theme-color" content="#000000" />
+
+		<title>IsItTheWeekendYet?</title>
+
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Geo|Henny+Penny|Special+Elite" />
+		<link rel="stylesheet" href="index.css" />
+
+		<script defer src="index.js"></script>
+
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41029650-2"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() { dataLayer.push(arguments); }
+			gtag('js', new Date());
+			gtag('config', 'UA-41029650-2');
+		</script>
+	</head>
+
+	<body class="is-dark">
+		<main role="main">
+			<p class="answer">...</p>
+
+			<output class="clock">
+				<span class="hours">000</span>
+				<span>:</span>
+				<span class="minutes">00</span>
+				<span>:</span>
+				<span class="seconds">00</span>
+			</output>
+		</main>
+
+		<small class="credits">© <a href="http://www.ravinggenius.com/">Thomas Ingram</a></small>
+	</body>
+</html>

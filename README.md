@@ -4,4 +4,26 @@ Count down to Friday at 17:00 or Monday at 08:00, whichever is closer to the use
 
 ### Setup / Installation
 
-This project uses [Node](http://nodejs.org/) and [roots](http://roots.cx/) ([NPM](https://npmjs.org/package/roots)), so you will need to set those up. After you have the `roots` command-line tool, run `roots watch` to start a development server (this also opens a browser) and `roots compile` to build the site.
+### Features / Ideas
+
+* [ ] favicons
+* [ ] about overlay
+  * instructions (?pause)
+  * preferences (timezone selection, custom work days/weekend, internationalization)
+  * copyright
+  * source code
+* [ ] tests
+* [ ] linting (javascript and styles)
+* [ ] don't get so close to white or other washed out colors
+* [ ] three bouncing dots while loading
+* [ ] add special handling for special dates
+  * comic sans for april 1
+* [ ] bundle with https://parceljs.org/
+* [ ] minimize html/css/js
+* [ ] optimize font handling
+  * https://www.filamentgroup.com/lab/rocket-science.html
+  * redo font faces: only `woff` and `woff2` are needed
+  * `font-display`
+  * unicode subsets
+  * prefetching (link tag)
+  * maybe font loading API (see talk notes in link above)

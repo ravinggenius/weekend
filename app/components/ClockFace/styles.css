@@ -1,9 +1,0 @@
-.clockFace {
-  font-family: monospace;
-  font-size: 9rem;
-  text-align: center;
-}
-
-:global(.font-Geo) .clockFace {
-  font-family: Geo, monospace;
-}

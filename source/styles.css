@@ -1,0 +1,76 @@
+html {
+	font-size: 62.5%;
+	height: 100%;
+}
+
+body {
+	align-items: center;
+	background-color: #000000;
+	background-image: radial-gradient(
+		circle at 50% 0%,
+		rgba(255, 255, 255, 0.2),
+		rgba(255, 255, 255, 0)
+	);
+	display: flex;
+	font-family: sans-serif;
+	height: 100vh;
+	justify-content: center;
+	margin: 0;
+	transition: all 0.5s ease-in-out;
+}
+
+:global(body.is-dark) {
+	color: rgba(255, 255, 255, 0.8);
+}
+
+:global(body.is-light) {
+	color: rgba(0, 0, 0, 0.6);
+}
+
+main {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+}
+
+:global(.answer-yes),
+:global(.answer-no) {
+	font-size: 30vw;
+	margin: 0;
+	width: min-content;
+}
+
+:global(.answer-yes) {
+	font-family: 'Henny Penny', cursive;
+}
+
+:global(.answer-no) {
+	font-family: 'Special Elite', sans-serif;
+}
+
+:global(.answer),
+:global(.clock) {
+	display: flex;
+	font-family: Geo, monospace;
+	font-size: 20vw;
+	width: min-content;
+}
+
+:global(small.credits) {
+	bottom: 0;
+	font-size: 2.4rem;
+	line-height: 1;
+	padding: 0.5rem;
+	position: absolute;
+}
+
+@media (max-width: 800px) {
+	:global(small.credits) {
+		font-size: 3vw;
+	}
+}
+
+:global(small.credits) a {
+	color: currentColor;
+	text-decoration: underline;
+}
