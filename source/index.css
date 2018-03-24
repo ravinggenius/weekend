@@ -19,11 +19,11 @@ body {
 	transition: all 0.5s ease-in-out;
 }
 
-:global(body.is-dark) {
+body.is-dark {
 	color: rgba(255, 255, 255, 0.8);
 }
 
-:global(body.is-light) {
+body.is-light {
 	color: rgba(0, 0, 0, 0.6);
 }
 
@@ -33,30 +33,30 @@ main {
 	flex-direction: column;
 }
 
-:global(.answer-yes),
-:global(.answer-no) {
+.answer-yes,
+.answer-no {
 	font-size: 30vw;
 	margin: 0;
 	width: min-content;
 }
 
-:global(.answer-yes) {
+.answer-yes {
 	font-family: 'Henny Penny', cursive;
 }
 
-:global(.answer-no) {
+.answer-no {
 	font-family: 'Special Elite', sans-serif;
 }
 
-:global(.answer),
-:global(.clock) {
+.answer,
+.clock {
 	display: flex;
 	font-family: Geo, monospace;
 	font-size: 20vw;
 	width: min-content;
 }
 
-:global(small.credits) {
+small.credits {
 	bottom: 0;
 	font-size: 2.4rem;
 	line-height: 1;
@@ -65,12 +65,12 @@ main {
 }
 
 @media (max-width: 800px) {
-	:global(small.credits) {
+	small.credits {
 		font-size: 3vw;
 	}
 }
 
-:global(small.credits) a {
+small.credits a {
 	color: currentColor;
 	text-decoration: underline;
 }

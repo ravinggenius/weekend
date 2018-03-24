@@ -6,8 +6,6 @@ import remainingSeconds from './application/remainingSeconds';
 import scale from './application/scale';
 import shouldRender from './application/shouldRender';
 
-import './styles.css';
-
 const themeColor = document.querySelector('meta[name="theme-color"]');
 
 const answer = document.querySelector('.answer');
