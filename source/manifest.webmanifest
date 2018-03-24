@@ -1,0 +1,16 @@
+{
+  "name": "IsItTheWeekendYet?",
+  "short_name": "Weekend?",
+  "icons": [
+    {
+      "src": "sunset.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "density": 1.0
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#000000"
+}
