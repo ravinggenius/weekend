@@ -35,25 +35,31 @@ main {
 
 .answer-yes,
 .answer-no {
-	font-size: 30vw;
 	margin: 0;
 	width: min-content;
 }
 
 .answer-yes {
 	font-family: 'Henny Penny', cursive;
+	font-size: 23vw;
+	line-height: 1.5;
 }
 
 .answer-no {
 	font-family: 'Special Elite', sans-serif;
+	font-size: 30vw;
 }
 
 .answer,
 .clock {
-	display: flex;
 	font-family: Geo, monospace;
 	font-size: 20vw;
 	width: min-content;
+}
+
+.clock {
+	display: flex;
+	line-height: 1;
 }
 
 small.credits {
