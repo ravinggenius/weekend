@@ -50,10 +50,14 @@ main {
 
 .answer,
 .clock {
-	display: flex;
 	font-family: Geo, monospace;
 	font-size: 20vw;
 	width: min-content;
+}
+
+.clock {
+	display: flex;
+	line-height: 1;
 }
 
 small.credits {
