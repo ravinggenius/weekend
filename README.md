@@ -12,6 +12,7 @@ Count down to Friday at 17:00 or Monday at 08:00, whichever is closer to the use
   * preferences (timezone selection, custom work days/weekend, internationalization)
   * copyright
   * source code
+* [ ] move `setInterval` to service worker
 * [ ] tests
 * [ ] linting (javascript and styles)
 * [ ] don't get so close to white or other washed out colors
