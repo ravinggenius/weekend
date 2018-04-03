@@ -18,12 +18,16 @@
   },
   "scripts": {
     "build": "parcel build --no-cache --out-dir build --public-url . source/index.html",
+    "lint": "eslint source",
     "start": "parcel --no-cache --out-dir build source/index.html"
   },
   "dependencies": {
     "color": "^3.0.0"
   },
   "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-bespoke": "^0.3.0",
+    "eslint-plugin-import": "^2.10.0",
     "parcel-bundler": "^1.6.2"
   }
 }
