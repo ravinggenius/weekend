@@ -18,7 +18,9 @@
   },
   "scripts": {
     "build": "parcel build --no-cache --out-dir build --public-url . source/index.html",
-    "lint": "eslint source",
+    "lint:script": "eslint source",
+    "lint:style": "stylelint source/**/*.css",
+    "lint": "npm-run-all lint:*",
     "start": "parcel --no-cache --out-dir build source/index.html"
   },
   "dependencies": {
@@ -28,6 +30,9 @@
     "eslint": "^4.19.1",
     "eslint-config-bespoke": "^0.3.0",
     "eslint-plugin-import": "^2.10.0",
-    "parcel-bundler": "^1.6.2"
+    "npm-run-all": "^4.1.2",
+    "parcel-bundler": "^1.6.2",
+    "stylelint": "^9.2.0",
+    "stylelint-config-bespoke": "^0.1.1"
   }
 }
