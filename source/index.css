@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 html {
 	font-size: 62.5%;
 	height: 100%;
@@ -40,13 +42,13 @@ main {
 }
 
 .answer-yes {
-	font-family: 'Henny Penny', cursive;
+	font-family: "Henny Penny", cursive;
 	font-size: 23vw;
 	line-height: 1.5;
 }
 
 .answer-no {
-	font-family: 'Special Elite', sans-serif;
+	font-family: "Special Elite", sans-serif;
 	font-size: 30vw;
 }
 
