@@ -21,7 +21,7 @@
     "lint:script": "eslint source",
     "lint:style": "stylelint source/**/*.css",
     "lint": "npm-run-all lint:*",
-    "start": "parcel --no-cache --out-dir build source/index.html"
+    "start": "parcel serve --no-cache --out-dir build source/index.html"
   },
   "dependencies": {
     "color": "^3.0.0"
